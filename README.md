@@ -10,6 +10,7 @@ This repository implements Occlusion Copy & Paste (OC&P) as described in our pap
 - Installing this repository will install MMDetection version 2.25.0 with our custom codes for OC&P ([see details below](#core-implementation))
 
 ```
+cd occlusion-copy-paste/
 python3 -m pip install . 
 ```
 or 
