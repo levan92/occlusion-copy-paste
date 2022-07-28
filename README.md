@@ -89,6 +89,8 @@ OCHuman Fully Labelled (FL) is introduced in our paper for fairer evaluation, as
 ./tools/dist_train.sh
 ```
 
+- NOTE: for Mask2Former trainings, we finetune from pre-trained COCO weights, so download the [corresponding weight files](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask2former) from MMDetection and update the `load_from=` paths in the corresponding config files.
+
 ## Evaluation
 
 - Look into said bash script to change your paths and namings accordingly
