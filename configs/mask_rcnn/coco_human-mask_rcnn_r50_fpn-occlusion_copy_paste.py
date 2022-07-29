@@ -208,7 +208,7 @@ log_config = dict(
         #     type='WandbLoggerHook',
         #     init_kwargs=dict(
         #         project='caphuman',
-        #         name='basic_copy_paste'
+        #         name='occ_copy_paste'
         #         ),
         #     out_suffix=('.log.json', '.log', '.py')
         #     )

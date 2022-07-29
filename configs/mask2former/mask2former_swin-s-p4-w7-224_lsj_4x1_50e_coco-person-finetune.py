@@ -175,15 +175,15 @@ log_config = dict(
     hooks=[
         dict(type='TextLoggerHook', by_epoch=False),
         dict(type='TensorboardLoggerHook', by_epoch=False),
-        dict(
-            type='WandbLoggerHook',
-            init_kwargs=dict(
-                project='improved-instance-segm',
-                name='m2f_swins_person-finetune-reduceLR'
-                ),
-            out_suffix=('.log.json', '.log', '.py','.pt','.pth','.pkl'),
-            by_epoch=False,
-            ),
+        # dict(
+        #     type='WandbLoggerHook',
+        #     init_kwargs=dict(
+        #         project='caphuman',
+        #         name='m2f_swins_person-finetune-reduceLR'
+        #         ),
+        #     out_suffix=('.log.json', '.log', '.py'),
+        #     by_epoch=False,
+        #     ),
         ]
     )
 
