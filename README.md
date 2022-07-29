@@ -98,8 +98,13 @@ OCHuman Fully Labelled (FL) is introduced in our paper for fairer evaluation, as
 - Look into said bash script to change your paths and namings accordingly
 
 ```
+cd occlusion-copy-paste/
 ./tools/dist_test.sh
 ```
+
+### Weights download
+
+- Download weights from links in [results table below](#results), and store in [`./weights/`](./weights/)
 
 ## Results
 
@@ -109,12 +114,13 @@ See more details and info in paper.
 |         Model                  |  OCHuman AP Val | OCHuman AP Test | OCHuman(FL) AP Val | OCHuman(FL) AP Test | Config |   Weights   |
 | :----------------------------: | :-------------: | :-------------: | :----------------: | :-----------------: | :----: | :---------: |
 |   [Pose2Seg](https://arxiv.org/abs/1803.10683) |         -       |       -         |        22.8        |        22.9         |   -    |  [from their repo](https://github.com/liruilong940607/Pose2Seg) |
-|  + Occlusion C&P (ours)        |         -       |       -         |        25.3        |        25.1         |   -    |  [link]() |
-|   [Mask R-CNN](https://arxiv.org/abs/1703.06870) (pretrained)      |       14.9      |      14.9       |        24.5        |        24.9         |   -    |  [from mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn) |
-|   Mask R-CNN (vanilla trained) |       16.5      |      16.6       |        27.0        |        27.4         |   -    |  [link]() |
-|  + Occlusion C&P (ours)        |       19.5      |      18.5       |        30.7        |        29.9         |   -    |  [link]() |
-|   [Mask2Former](https://arxiv.org/abs/2112.01527) (pretrained)     |       25.9      |      25.4       |        43.2        |        44.7         |   -    |  [from mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask2former) |
-|   Mask2Former (vanilla trained)|       26.7      |      26.3       |        45.2        |        46.4         |   -    |  [link]() |
-|  + [Simple Copy-Paste](https://arxiv.org/abs/2012.07177)           |       28.0      |      27.7       |        48.9        |        50.2         |   -    |  [link]() |
-|  + Occlusion C&P (ours)        |       28.9      |      28.3       |        49.3        |        50.6         |   -    |  [link]() |
+|  + Occlusion C&P (ours)        |         -       |       -         |        25.3        |        25.1         |   -    |  [gdrive dl link]() |
+|   [Mask R-CNN](https://arxiv.org/abs/1703.06870) (pretrained)      |       14.9      |      14.9       |        24.5        |        24.9         |   [from mmdet](https://github.com/open-mmlab/mmdetection/blob/master/configs/mask_rcnn/mask_rcnn_r50_fpn_mstrain-poly_3x_coco.py)    |  [from mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask_rcnn) |
+|   Mask R-CNN (vanilla trained) |       16.5      |      16.6       |        27.0        |        27.4         |   [cfg](configs/mask_rcnn/coco_human-vanilla_baseline-75epochs.py)    |  -  |
+|  + Basic C&P (ours)            |       18.6      |      17.8       |        29.3        |        28.5         |   [cfg](configs/mask_rcnn/coco_human-mask_rcnn_r50_fpn-basic_copy_paste.py)    |  [gdrive dl link](https://drive.google.com/uc?confirm=t&id=1wE0wwPDfkSBJjdStaXySCVFazFhVUnRv) |
+|  + Occlusion C&P (ours)        |       19.5      |      18.6       |        30.6        |        29.9         |   [cfg](configs/mask_rcnn/coco_human-mask_rcnn_r50_fpn-occlusion_copy_paste.py)    |  [gdrive dl link](https://drive.google.com/uc?confirm=t&id=1VdZfaK8Ck79RtYn6FDqAS3o_2kpINauc) |
+|   [Mask2Former](https://arxiv.org/abs/2112.01527) (pretrained)     |       25.9      |      25.4       |        43.2        |        44.7         |   [from mmdet](https://github.com/open-mmlab/mmdetection/blob/master/configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_8x2_50e_coco.py)    |  [from mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask2former) |
+|   Mask2Former (vanilla trained)|       26.7      |      26.3       |        45.2        |        46.4         |   [cfg](configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_4x1_50e_coco-person-finetune.py)    |  -  |
+|  + [Simple Copy-Paste](https://arxiv.org/abs/2012.07177)           |       28.0      |      27.7       |        48.9        |        50.2         |   [cfg](configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_4x1_50e_coco-person-finetune-SCP-5e.py)   |  - |
+|  + Occlusion C&P (ours)        |       28.9      |      28.3       |        49.3        |        50.6         |   [cfg](configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_4x1_50e_coco-person-finetune-OCP_aug-5e.py)    |  [gdrive dl link](https://drive.google.com/uc?confirm=t&id=1K48JBMgQlWM2z7g3rFslfbX_KIw8KH-o) |
 
