@@ -89,6 +89,7 @@ data = dict(
                 type='CocoDataset',
                 ann_file=data_root + 'COCO2017/annotations/instances_train2017.json',
                 img_prefix=data_root + 'COCO2017/train2017/',
+                classes=classes,
                 pipeline=[
                     dict(type='LoadImageFromFile'),
                     dict(type='LoadAnnotations',
@@ -150,7 +151,23 @@ data = dict(
                     test_mode=True,
                     pipeline=test_pipeline,
                     ),
-                ],
+                dict(
+                    type='CocoDataset',
+                    ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00_full_labelled.json',
+                    img_prefix='data/OCHuman/images/',
+                    classes=classes,
+                    test_mode=True,
+                    pipeline=test_pipeline,
+                    ),
+                dict(
+                    type='CocoDataset',
+                    ann_file=data_root + 'OCHuman/ochuman_coco_format_test_range_0.00_1.00_full_labelled.json',
+                    img_prefix='data/OCHuman/images/',
+                    classes=classes,
+                    test_mode=True,
+                    pipeline=test_pipeline
+                    ),
+                ]
         )
     )
 

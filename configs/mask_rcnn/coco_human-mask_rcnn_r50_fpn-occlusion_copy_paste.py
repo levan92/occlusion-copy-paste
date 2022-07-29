@@ -89,6 +89,7 @@ data = dict(
                 type='CocoDataset',
                 ann_file=data_root + 'COCO2017/annotations/instances_train2017.json',
                 img_prefix=data_root + 'COCO2017/train2017/',
+                classes=classes,
                 pipeline=[
                     dict(type='LoadImageFromFile'),
                     dict(type='LoadAnnotations',

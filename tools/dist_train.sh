@@ -5,10 +5,12 @@ set -e
 GPUS=4 #number of gpus per node
 PORT=${PORT:-29500}
 
-WORK_DIR_PARENT="/path/to/your/workdir/"
+WORK_DIR_PARENT="./work_dirs/"
 
-config_dir="configs/mask2former"
-run_name="coco_human-mask_rcnn_r50_fpn-occlusion_copy_paste" # say, for running `configs/mask_rcnn/coco_human-mask_rcnn_r50_fpn-occlusion_copy_paste.py`
+config_dir="configs/mask_rcnn/"
+# run_name="coco_human-mask_rcnn_r50_fpn-basic_copy_paste" 
+run_name="coco_human-mask_rcnn_r50_fpn-occlusion_copy_paste" #config file with/without suffix '.py'
+
 
 run_name="${run_name%.py}"
 echo "Running training for $run_name.."

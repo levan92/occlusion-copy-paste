@@ -143,7 +143,30 @@ data = dict(
                 classes=classes,
                 test_mode=True,
                 pipeline=test_pipeline,
-            )
+            ),
+            dict(type=dataset_type,
+                ann_file=data_root + 'COCO2017/annotations/instances_val_person2017.json',
+                img_prefix=data_root + 'COCO2017/val2017/',
+                classes=classes,
+                test_mode=True,
+                pipeline=test_pipeline,
+                ),
+            dict(
+                type=dataset_type,
+                ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00_full_labelled.json',
+                img_prefix='data/OCHuman/images/',
+                classes=classes,
+                test_mode=True,
+                pipeline=test_pipeline,
+                ),
+            dict(
+                type=dataset_type,
+                ann_file=data_root + 'OCHuman/ochuman_coco_format_test_range_0.00_1.00_full_labelled.json',
+                img_prefix='data/OCHuman/images/',
+                classes=classes,
+                test_mode=True,
+                pipeline=test_pipeline
+                ),
         ]
     )
 )
