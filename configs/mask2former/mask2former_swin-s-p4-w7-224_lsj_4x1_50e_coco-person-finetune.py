@@ -6,7 +6,7 @@ num_things_classes = len(classes)
 num_stuff_classes = 0
 num_classes = num_things_classes + num_stuff_classes
 
-load_from = "/datadisk/levan/mmdet/weights/mask2former/instance/mask2former_swin-s-p4-w7-224_lsj_8x2_50e_coco_20220504_001756-743b7d99.pth"
+load_from = "weights/mask2former_swin-s-p4-w7-224_lsj_8x2_50e_coco_20220504_001756-743b7d99.pth"
 
 model = dict(
     panoptic_head=dict(
