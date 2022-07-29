@@ -6,7 +6,9 @@ This repository implements Occlusion Copy & Paste (OC&P) as described in our pap
 
 ## Install 
 
-- Make sure mmcv is installed (our mmcv version is 1.5.3, but any works as long as it is compatible with our mmdet version) 
+- Make sure [mmcv](https://github.com/open-mmlab/mmcv) is installed, full version.
+  - We usually clone `mmcv` and enter it to install with `MMCV_WITH_OPS=1 python3 -m pip install .`  (our mmcv version is 1.5.3, but any works as long as it is compatible with our mmdet version) 
+- Adhere to mmdet/mmcv's PyTorch/CUDA requirements (our PyTorch version is 1.9.0 and CUDA version is 11.1, any works as long as it is compatible to mmdet/mmcv)
 - Installing this repository will install MMDetection version 2.25.0 with our custom codes for OC&P ([see details below](#core-implementation))
 
 ```
