@@ -144,7 +144,7 @@ data = dict(
             dict(
                 type=dataset_type,
                 ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00_full_labelled.json',
-                img_prefix='data/OCHuman/images/',
+                img_prefix=data_root + 'OCHuman/images/',
                 classes=classes,
                 test_mode=True,
                 pipeline=test_pipeline,
@@ -152,7 +152,7 @@ data = dict(
             dict(
                 type=dataset_type,
                 ann_file=data_root + 'OCHuman/ochuman_coco_format_test_range_0.00_1.00_full_labelled.json',
-                img_prefix='data/OCHuman/images/',
+                img_prefix=data_root + 'OCHuman/images/',
                 classes=classes,
                 test_mode=True,
                 pipeline=test_pipeline
