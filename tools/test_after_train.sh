@@ -36,11 +36,11 @@ python -m torch.distributed.launch \
     ${best_model} \
     --launcher pytorch \
     --fuse-conv-bn \
-    --work-dir ${work_dir}/${test_set}/ \
-    --out ${work_dir}/${test_set}/results.pkl \
+    --work-dir ${WORK_DIR}/${test_set}/ \
+    --out ${WORK_DIR}/${test_set}/results.pkl \
     --eval bbox segm \
     --show \
-    --show-dir ${work_dir}/${test_set}/viz/ \
+    --show-dir ${WORK_DIR}/${test_set}/viz/ \
     --show-score-thr 0.3 \
-    --eval-options jsonfile_prefix=${work_dir}/${test_set}/res_jsons/res
+    --eval-options jsonfile_prefix=${WORK_DIR}/${test_set}/res_jsons/res
     
