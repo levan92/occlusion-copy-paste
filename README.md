@@ -43,7 +43,7 @@ for editable installation
 ### (additional) Pose2Seg implementation 
 
 - OCP is additionally implementated for training with [Pose2Seg](https://github.com/liruilong940607/Pose2Seg). 
-- Please refer to [./Pose2Seg_OCP/](./Pose2Seg_OCP). 
+- Please refer to [./Pose2Seg_OCP/README.md](./Pose2Seg_OCP/README.md). 
 - Pose2Seg is implemented in plain PyTorch, so our OC&P code implementation there should be more suitable for any new adaptations elsewhere that don't use MMDetection. 
 - Main efforts in implementing OC&P there is additionally handling copy & pasting and augmentation of keypoints (which wasn't considered in Mask RCNN or Mask2Former).
 
