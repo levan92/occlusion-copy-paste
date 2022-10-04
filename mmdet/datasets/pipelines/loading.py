@@ -13,7 +13,6 @@ try:
 except ImportError:
     rgb2id = None
 
-
 @PIPELINES.register_module()
 class LoadImageFromFile:
     """Load an image from file.
@@ -201,8 +200,7 @@ class LoadMultiChannelImageFromFiles:
                     f'file_client_args={self.file_client_args})')
         return repr_str
 
-'''Custom code modification for improved-instance-segm
-'''
+
 @PIPELINES.register_module()
 class LoadAnnotations:
     """Load multiple types of annotations.
@@ -231,7 +229,6 @@ class LoadAnnotations:
                  with_label=True,
                  with_mask=False,
                  with_seg=False,
-                 with_keypoints=False,
                  poly2mask=True,
                  denorm_bbox=False,
                  file_client_args=dict(backend='disk')):
@@ -239,7 +236,6 @@ class LoadAnnotations:
         self.with_label = with_label
         self.with_mask = with_mask
         self.with_seg = with_seg
-        self.with_keypoints = with_keypoints
         self.poly2mask = poly2mask
         self.denorm_bbox = denorm_bbox
         self.file_client_args = file_client_args.copy()
@@ -380,27 +376,6 @@ class LoadAnnotations:
         results['seg_fields'].append('gt_semantic_seg')
         return results
 
-    def _load_keypoints(self, results):
-        """Private function to load keypoint annotations.
-
-        Args:
-            results (dict): Result dict from :obj:`mmdet.CustomDataset`.
-
-        Returns:
-            dict: The dict contains loaded mask annotations.
-                If ``self.poly2mask`` is set ``True``, `gt_mask` will contain
-                :obj:`PolygonMasks`. Otherwise, :obj:`BitmapMasks` is used.
-        """
-
-        gt_keypoints = results['ann_info']['keypoints']
-
-        total_num_kps = gt_keypoints.shape[-1]/3
-
-        num_visible = gt_keypoints[2::3]
-
-        results['gt_keypoints'] = gt_keypoints
-        return results
-
     def __call__(self, results):
         """Call function to load multiple types annotations.
 
@@ -422,8 +397,6 @@ class LoadAnnotations:
             results = self._load_masks(results)
         if self.with_seg:
             results = self._load_semantic_seg(results)
-        if self.with_keypoints: 
-            results = self._load_keypoints(results)
         return results
 
     def __repr__(self):
@@ -433,7 +406,7 @@ class LoadAnnotations:
         repr_str += f'with_mask={self.with_mask}, '
         repr_str += f'with_seg={self.with_seg}, '
         repr_str += f'poly2mask={self.poly2mask}, '
-        repr_str += f'poly2mask={self.file_client_args})'
+        repr_str += f'file_client_args={self.file_client_args})'
         return repr_str
 
 
@@ -590,7 +563,7 @@ class LoadProposals:
 
     def __repr__(self):
         return self.__class__.__name__ + \
-               f'(num_max_proposals={self.num_max_proposals})'
+            f'(num_max_proposals={self.num_max_proposals})'
 
 
 @PIPELINES.register_module()
@@ -651,19 +624,21 @@ class FilterAnnotations:
         for t in tests[1:]:
             keep = keep & t
 
+        keep = keep.nonzero()[0]
+
         keys = ('gt_bboxes', 'gt_labels', 'gt_masks')
         for key in keys:
             if key in results:
                 results[key] = results[key][keep]
-        if not keep.any():
+        if keep.size == 0:
             if self.keep_empty:
                 return None
         return results
 
     def __repr__(self):
         return self.__class__.__name__ + \
-               f'(min_gt_bbox_wh={self.min_gt_bbox_wh},' \
-               f'(min_gt_mask_area={self.min_gt_mask_area},' \
-               f'(by_box={self.by_box},' \
-               f'(by_mask={self.by_mask},' \
-               f'always_keep={self.always_keep})'
+            f'(min_gt_bbox_wh={self.min_gt_bbox_wh},' \
+            f'min_gt_mask_area={self.min_gt_mask_area},' \
+            f'by_box={self.by_box},' \
+            f'by_mask={self.by_mask},' \
+            f'always_keep={self.always_keep})'
