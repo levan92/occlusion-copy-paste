@@ -21,6 +21,7 @@ from mmdet.utils import (collect_env, get_device, get_root_logger,
                          replace_cfg_vals, setup_multi_processes,
                          update_data_root)
 
+import mmdet.custom #import custom logic, which registers OccCopyPaste
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
@@ -176,8 +177,8 @@ def main():
 
     # create work_dir
     mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
-    # # dump config
-    # cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
+    # dump config
+    cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
     # init the logger before other steps
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
@@ -193,10 +194,10 @@ def main():
     logger.info('Environment info:\n' + dash_line + env_info + '\n' +
                 dash_line)
     meta['env_info'] = env_info
-    # meta['config'] = cfg.pretty_text
+    meta['config'] = cfg.pretty_text
     # log some basic info
     logger.info(f'Distributed training: {distributed}')
-    # logger.info(f'Config:\n{cfg.pretty_text}')
+    logger.info(f'Config:\n{cfg.pretty_text}')
 
     cfg.device = get_device()
     # set random seeds
@@ -227,39 +228,7 @@ def main():
             wandb_init_kwargs['config'] = cfg._cfg_dict.to_dict()
             wandb.init(**wandb_init_kwargs)
             logger.info('Logged cfg to wandb.') 
-
-            # TODO: for multi-process sweep, need to send config from rank0 to rest of ranks
-            wandb_cfg_dict = wandb.config.as_dict()
-
-            ocp_sweep_keys = [ k for k in wandb_cfg_dict if k.startswith("OccCopyPasteSweep")]
-            if len(ocp_sweep_keys) > 0: 
-                for i, aug in enumerate(cfg.data.train.pipeline):
-                    if aug["type"] == "OccCopyPaste":
-                        break
-
-                if 'OccCopyPasteSweep.paste_num' in wandb_cfg_dict and isinstance(wandb_cfg_dict['OccCopyPasteSweep.paste_num'], str): 
-                    wandb_cfg_dict['OccCopyPasteSweep.paste_num'] = [ int(x) for x in wandb_cfg_dict['OccCopyPasteSweep.paste_num'].split(',') ]
-
-                for key in ocp_sweep_keys:
-                    ocp_arg = key.split('.')[-1]
-                    cfg.data.train.pipeline[i][ocp_arg] = wandb_cfg_dict[key]
-
-            optimizer_keys = [ k for k in wandb_cfg_dict if k.startswith("optimizerSweep")]
-            if len(optimizer_keys) > 0: 
-                for key in optimizer_keys:
-                    opt_arg = key.split('.')[-1]
-                    cfg.optimizer[opt_arg] = wandb_cfg_dict[key]
-
-    meta['config'] = cfg.pretty_text
-    # log some basic info
-    logger.info(f'Config:\n{cfg.pretty_text}')
-    # dump config
-    cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
-    # update cfg to wandb
-    if wandb_init_kwargs is not None and (not distributed or local_rank==0):
-        wandb.config.update(cfg._cfg_dict.to_dict(), allow_val_change=True)
-        logger.info('Updated cfg to wandb.') 
-
+            
     model = build_detector(
         cfg.model,
         train_cfg=cfg.get('train_cfg'),
@@ -268,8 +237,10 @@ def main():
 
     datasets = [build_dataset(cfg.data.train)]
     if len(cfg.workflow) == 2:
+        assert 'val' in [mode for (mode, _) in cfg.workflow]
         val_dataset = copy.deepcopy(cfg.data.val)
-        val_dataset.pipeline = cfg.data.train.pipeline
+        val_dataset.pipeline = cfg.data.train.get(
+            'pipeline', cfg.data.train.dataset.get('pipeline'))
         datasets.append(build_dataset(val_dataset))
     if cfg.checkpoint_config is not None:
         # save mmdet version, config file content and class names in
@@ -279,7 +250,6 @@ def main():
             CLASSES=datasets[0].CLASSES)
     # add an attribute for visualization convenience
     model.CLASSES = datasets[0].CLASSES
-    print(f"LENGTH OF DATASET: {len(datasets[0])}")
     train_detector(
         model,
         datasets,
