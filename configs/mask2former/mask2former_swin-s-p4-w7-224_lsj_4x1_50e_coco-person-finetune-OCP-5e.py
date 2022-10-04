@@ -109,7 +109,7 @@ data = dict(
             ),
             dict(
                 type=dataset_type,
-                ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00.json',
+                ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00_full_labelled.json',
                 img_prefix=data_root + 'OCHuman/images/',
                 classes=classes,
                 test_mode=True,
@@ -199,7 +199,7 @@ log_config = dict(
         # dict(
         #     type='WandbLoggerHook',
         #     init_kwargs=dict(
-        #         project='caphuman',
+        #         project='ocp',
         #         name='m2f_swins_person-finetune-OCP-5e'
         #         ),
         #     out_suffix=('.log.json', '.log', '.py'),
