@@ -125,3 +125,14 @@ See more details and info in paper.
 |  + [Simple Copy-Paste](https://arxiv.org/abs/2012.07177)           |       28.0      |      27.7       |        48.9        |        50.2         |   [cfg](configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_4x1_50e_coco-person-finetune-SCP-5e.py)   |  - |
 |  + Occlusion C&P (ours)        |       28.9      |      28.3       |        49.3        |        50.6         |   [cfg](configs/mask2former/mask2former_swin-s-p4-w7-224_lsj_4x1_50e_coco-person-finetune-OCP_aug-5e.py)    |  [gdrive dl link](https://drive.google.com/uc?confirm=t&id=1K48JBMgQlWM2z7g3rFslfbX_KIw8KH-o) |
 
+
+# Citation 
+
+If you find this work useful in your own research, please consider citing:
+
+@inproceedings{ling2022ocp,
+    author = {Ling, Evan and Huang, Dezhao and Hur, Minhoe},
+    title = {Humans need not label more humans: Occlusion Copy \& Paste for Occluded Human Instance Segmentation},
+    booktitle = {British Machine Vision Conference (BMVC)},
+    year = {2022}
+}
