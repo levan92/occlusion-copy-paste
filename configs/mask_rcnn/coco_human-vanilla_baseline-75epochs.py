@@ -55,7 +55,7 @@ data = dict(
                 pipeline=test_pipeline,
                 ),
             dict(type='CocoDataset',
-                ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00.json',
+                ann_file=data_root + 'OCHuman/ochuman_coco_format_val_range_0.00_1.00_full_labelled.json',
                 img_prefix=data_root + 'OCHuman/images/',
                 classes=classes,
                 pipeline=test_pipeline,
