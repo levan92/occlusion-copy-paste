@@ -100,6 +100,10 @@ Subset of COCO mini val (5K images) that contains only person class:
 
 - NOTE: for Mask2Former trainings, we finetune from pre-trained COCO weights, so download the [corresponding weight files](https://github.com/open-mmlab/mmdetection/tree/master/configs/mask2former) from MMDetection and update the `load_from=` paths in the corresponding config files.
 
+### Logging hooks 
+
+`TextLoggerHook` is defined in our configs, and wandb logging hook `WandbLoggerHook` is also provided (commented out) in `mmdet`. Tensorboard logging `TensorboardLoggerHook` is also [supported](https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/logger/tensorboard.py) in `mmdet`/`mmcv`.
+
 ## Evaluation
 
 - Look into said bash script to change your paths and namings accordingly
