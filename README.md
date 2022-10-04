@@ -128,7 +128,7 @@ See more details and info in paper.
 
 # Citation 
 
-If you find this work useful in your own research, please consider citing:
+If you find this work useful for your research, please consider citing:
 
 @inproceedings{ling2022ocp,
     author = {Ling, Evan and Huang, Dezhao and Hur, Minhoe},
