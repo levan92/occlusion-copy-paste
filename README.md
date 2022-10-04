@@ -6,10 +6,12 @@ This repository implements Occlusion Copy & Paste (OC&P) as described in our pap
 
 ## Install 
 
-- Make sure [mmcv](https://github.com/open-mmlab/mmcv) is installed, full version.
+- Make sure [mmcv](https://github.com/open-mmlab/mmcv) v1+ is installed, full version.
   - We usually clone `mmcv` and enter it to install with `MMCV_WITH_OPS=1 python3 -m pip install .`  (our mmcv version is 1.5.3, but any works as long as it is compatible with our mmdet version) 
 - Adhere to mmdet/mmcv's PyTorch/CUDA requirements (our PyTorch version is 1.9.0 and CUDA version is 11.1, any works as long as it is compatible to mmdet/mmcv)
-- Installing this repository will install MMDetection version 2.25.0 with our custom codes for OC&P ([see details below](#core-implementation))
+- Installing this repository will install MMDetection with our custom codes for OC&P ([see details below](#core-implementation))
+  - Code here is based of mmdet v2+ (current master branch of mmdet) 
+    - Mmdet v3 is available now and we have separate plans to upgrade to v3. Not supported in this repo. 
 
 ```
 cd occlusion-copy-paste/
@@ -26,10 +28,9 @@ for editable installation
 
 ### Core implementation
 
-- Implementation is built upon [MMDetection](https://github.com/open-mmlab/mmdetection).
-- Main changes in [`mmdet/datasets/pipelines/transforms.py`](./mmdet/datasets/pipelines/transforms.py)
-  - Search for inline comments: `Code added as part of Occlusion Copy Paste`
-- Only the eventual Occlusion Copy & Paste implementation is provided in this repository for brevity. If you require implementation codes for other add-ons, please contact us.  
+- Implementation is built upon [MMDetection](https://github.com/open-mmlab/mmdetection) version 2+
+- Occlusion Copy & Paste logic is contained within [`mmdet/custom/ocp.py`](./mmdet/custom/ocp.py)
+- Only the eventual Occlusion Copy & Paste implementation is provided in this repository for brevity. If you require implementation codes for other add-ons (realism enhancers as described in our paper), please contact us.  
 - Training config files for OCP can be found in: 
   - Mask-RCNN, R50 backbone, FPN:
     - Vanilla Baseline (w/o copy paste): [`configs/mask_rcnn/coco_human-vanilla_baseline-75epochs.py`](configs/mask_rcnn/coco_human-vanilla_baseline-75epochs.py)

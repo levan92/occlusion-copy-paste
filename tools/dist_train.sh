@@ -12,7 +12,7 @@ config_dir="configs/mask_rcnn/"
 run_name="coco_human-mask_rcnn_r50_fpn-occlusion_copy_paste" #config file with/without suffix '.py'
 
 
-run_name="${run_name%.py}"
+run_name="${run_name%.py}" # this will strip trailing .py
 echo "Running training for $run_name.."
 
 WORK_DIR="${WORK_DIR_PARENT}/${run_name}"

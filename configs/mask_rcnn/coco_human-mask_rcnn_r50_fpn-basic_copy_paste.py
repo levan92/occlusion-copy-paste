@@ -45,11 +45,11 @@ train_pipeline = [
         prob=0.8,
         basket_size=5,
         paste_num=[1,10],
-        min_size_paste=0.0,
+        min_size_paste=0.0, # no min size imposed
         min_size_occ=0.01,
-        targeted_paste_prob=0.0,
+        targeted_paste_prob=0.0, # no targeted
         targeted_paste_buffer=0.4,
-        aug_paste_geom_jitter=False,
+        aug_paste_geom_jitter=False, # no aug paste
         aug_paste_img_jitter=False,
     ),
     dict(type='RandomFlip', flip_ratio=0.5),
