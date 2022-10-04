@@ -126,6 +126,7 @@ lr_config = dict(
     step=[22, 24]
     )
 runner = dict(type='EpochBasedRunner', max_epochs=25)
+# 25 epochs, but 3x repeat dataset, equivalent to 75 epochs
 
 evaluation = dict(
         interval=1, 
@@ -142,7 +143,7 @@ log_config = dict(
         # dict(
         #     type='WandbLoggerHook',
         #     init_kwargs=dict(
-        #         project='caphuman',
+        #         project='ocp',
         #         name='coco_human-75eps-baseline'
         #         ),
         #     out_suffix=('.log.json', '.log', '.py')

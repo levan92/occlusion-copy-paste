@@ -199,7 +199,7 @@ log_config = dict(
         # dict(
         #     type='WandbLoggerHook',
         #     init_kwargs=dict(
-        #         project='caphuman',
+        #         project='ocp',
         #         name='m2f_swins_person-finetune-OCP-5e'
         #         ),
         #     out_suffix=('.log.json', '.log', '.py'),

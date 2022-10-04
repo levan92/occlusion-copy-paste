@@ -86,9 +86,10 @@ OCHuman Fully Labelled (FL) is introduced in our paper for fairer evaluation, as
 ## Train
 
 - We train with multi-gpu [DDP](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
-- Look into said bash script to change your paths and namings accordingly
+- Look into `./tools/dist_train.sh` script to change the env variables, paths and namings accordingly
 
-```
+```bash 
+# from occlusion-copy-paste/
 ./tools/dist_train.sh
 ```
 

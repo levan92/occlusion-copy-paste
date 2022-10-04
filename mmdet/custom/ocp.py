@@ -197,7 +197,7 @@ class OccCopyPaste:
         for basket_idx, target in enumerate(results['mix_results']):
             mask_bboxes = target['gt_masks'].get_bboxes()
             assert len(target['gt_masks']) == len(mask_bboxes)
-            assert len(target['gt_masks']) == len(target['gt_bboxes_labels'])
+            assert len(target['gt_masks']) == len(target['gt_labels'])
             for mask, mask_bb, label in zip(target['gt_masks'], mask_bboxes, target['gt_labels']):
                 mx1, my1, mx2, my2 = mask_bb
                 if (mx2-mx1)/img_size > self.min_size_paste and (my2-my1)/img_size > self.min_size_paste:
