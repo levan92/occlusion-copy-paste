@@ -95,15 +95,8 @@ class OccCopyPaste:
         paste_num (List[int]): Range of number of instances to be pasted on one image. Randomly chosen in range: [min, max].
         min_size_paste (float): Minimum size (as a proportion of equalized image side length) for which to consider a valid pasting instance. Equalized image side length is the square root of the area of the image. 
         min_size_occ (float): Minimum size (as a proportion of equalized image side length) for which to still consider as a GT instance. GT instances's bboxes may drop below min_size after pasting other instance in due to occlusion. This will not be imposed on existing instances that does not intersect with any new pasted instances. 
-        blending (bool): To do blended pasting of instances or not. 
-        blend_float_prob (float): Between 0.0 to 1.0. Probability of doing do gaussian blurring on masks that are floats (as oppose to int). Float blurring leads to "fading" effect. Note that float blending is 3x slower. 
-        gaussian_kernel (List | int): Range of sizes of gaussian blur kernel (have to be odd): [min, max]. Kernel size chosen random between given range. If int is given, size is deterministic. Only relevant if blending is True. 
-        gaussian_sd (List | int): Range of sizes of gaussian kernel's standard deviation(sigma): [min, max]. Gaussian kernel s.d. chosen randomly between given range. If int is given, value is deterministic. Only relevant if blending is True.
         targeted_paste_prob (float): Between 0.0 to 1.0. Probability of applying targeted pasting. Targeted pasting tries to maximise occlusion of pasted instances with existing instance. Defaults to 0, meaning no targeted pasting done. 
         targeted_paste_buffer (float): Ratio of target bounding box size. Amount of buffer around target bounding box, buffer + bb + buffer will be the bounds that a new instance will be pasted in during targeted paste mode. Can be negative. 
-        scale_aware (bool): Flag True to turn on scaling of pasted instance according to the size of existing instances in the image. Defaults to False.
-        context_paste (bool): Flag True to turn on pasting based on context. If context_paste is True, but image has no context info, it will paste near human vicinity (same as targeted paste). Defaults to False.
-        self_paste (bool): Flag True to turn on self-pasting.
         aug_paste_geom_jitter (bool): Flag True to turn on geometric augmentation (flip/scale/rotation) on pasted instances
         aug_paste_img_jitter: Flag True to turn on color jittering augmentation on pasted instances
         viz (bool): Flag True to store additional results on which instances are pasted on synthetically. Stored in results['pasted_flags']. Typically used for visualisation purpose. 
