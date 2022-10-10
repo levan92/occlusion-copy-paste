@@ -1,6 +1,6 @@
 # Occlusion Copy & Paste
 
-Code for [Humans need not label more humans: Occlusion Copy & Paste for Occluded Human Instance Segmentation]()
+Code for [Humans need not label more humans: Occlusion Copy & Paste for Occluded Human Instance Segmentation](https://arxiv.org/abs/2210.03686) (BMVC 2022)
 
 This repository implements Occlusion Copy & Paste (OC&P) as described in our paper. Most of the repository is based on [MMDetection](https://github.com/open-mmlab/mmdetection).
 
