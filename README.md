@@ -143,6 +143,6 @@ If you find this work useful for your research, please consider citing:
 @inproceedings{ling2022ocp,
     author = {Ling, Evan and Huang, Dezhao and Hur, Minhoe},
     title = {Humans need not label more humans: Occlusion Copy \& Paste for Occluded Human Instance Segmentation},
-    booktitle = {British Machine Vision Conference (BMVC)},
+    booktitle = {33rd British Machine Vision Conference 2022, {BMVC} 2022, London, UK, November 21-24, 2022},
     year = {2022}
 }
