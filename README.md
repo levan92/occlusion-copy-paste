@@ -82,13 +82,13 @@ for editable installation
 ### OCHuman Fully Labelled
 
 OCHuman Fully Labelled (FL) is introduced in our paper for fairer evaluation, as [original OCHuman](https://github.com/liruilong940607/OCHumanApi) val & test sets contain images that are not exhaustively labelled (with ground-truth masks). We provide here a subset of the OCHuman sets that contain exhaustively labelled ones. This subset is derived from OCHuman's original json label files (`ochuman.json`), where they exhaustively label the bounding boxes for most of the human instances (of course there are ones that are missed out, but mostly negligible), but only selectively label pose keypoints & masks. This subset contains images that have bounding boxes with labelled GT masks. All credits of images and annotations go to OCHuman creators. JSON files of this subset: 
-  - [ochuman_coco_format_val_range_0.00_1.00_full_labelled.json](https://drive.google.com/file/d/1fVEHOnSeCNx-P0D4cdVHTMD4Yd0roFVr/view?usp=sharing)
-  - [ochuman_coco_format_test_range_0.00_1.00_full_labelled.json](https://drive.google.com/file/d/1aGeqM60Clb7VNlweHrfq7HHu5vqbbZNN/view?usp=sharing)
-
+  - [ochuman_coco_format_val_range_0.00_1.00_full_labelled.json](https://drive.google.com/uc?confirm=t&id=14dmlxD0A_R_O-OQOWFPx2H6sZtDMVTp1)
+  - [ochuman_coco_format_test_range_0.00_1.00_full_labelled.json](https://drive.google.com/uc?confirm=t&id=1FWnVRh0BHuR1Cggl-RYxxLnrbRaWRdX-)
+  
 ### COCO Person
 
 Subset of COCO mini val (5K images) that contains only person class: 
-  - [instances_val_person2017.json](https://drive.google.com/file/d/1MBOyyFMzjPdtUsE10234lQnUnDUNUCnX/view?usp=sharing)
+  - [instances_val_person2017.json](https://drive.google.com/uc?confirm=t&id=1djWp-GOv-M5PqSySaV4iZH_XYIFjEpSd)
 
 ## Train
 
